@@ -29,6 +29,26 @@ public class CustomListTest {
         assertTrue(list.hasCity(edm));   // other city still there
     }
 
+    @Test
+    public void testCountCities_countsAccurately() {
+        CustomList list = new CustomList();
+
+        // empty list
+        assertEquals(0, list.countCities());
+
+        // add two cities
+        City cal = new City("Calgary", "AB");
+        City edm = new City("Edmonton", "AB");
+        list.addCity(cal);
+        list.addCity(edm);
+        assertEquals(2, list.countCities());
+
+        // delete one and re-check
+        list.deleteCity(cal);   // deleting same instance to avoid equals() issues
+        assertEquals(1, list.countCities());
+    }
+
+
 
 
 }
